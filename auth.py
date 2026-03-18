@@ -1,6 +1,7 @@
 import random
 import jwt
 import datetime
+from dotenv import load_dotenv
 from fastapi import APIRouter
 from database import users_collection
 from models import EmailRequest, OTPVerifyRequest, TokenResponse
@@ -9,6 +10,7 @@ import os
 
 router = APIRouter()
 
+load_dotenv()
 
 SECRET = os.getenv("SECRET_KEY")
 

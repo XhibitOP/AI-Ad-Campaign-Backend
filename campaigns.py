@@ -2,12 +2,14 @@ from fastapi import APIRouter
 from database import campaigns_collection
 from models import CampaignCreate, Campaign
 import uuid
+from middleware import verify_token
+from fastapi import Depends
 
 router = APIRouter()
 
 
 @router.post("/create")
-def create_campaign(data: CampaignCreate):
+def create_campaign(data: CampaignCreate, user=Depends(verify_token)):
     campaign = {
         "id": str(uuid.uuid4()),
         "name": data.name,
