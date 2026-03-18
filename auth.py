@@ -5,10 +5,12 @@ from fastapi import APIRouter
 from database import users_collection
 from models import EmailRequest, OTPVerifyRequest, TokenResponse
 from fastapi import HTTPException
+import os
 
 router = APIRouter()
 
-SECRET = "supersecretkey"
+
+SECRET = os.getenv("SECRET_KEY")
 
 
 # Generate OTP
